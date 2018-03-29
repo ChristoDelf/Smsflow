@@ -7,9 +7,15 @@ import {tap} from "rxjs/operators";
 @Injectable()
 export class AuthService {
 
+    private user: User = null;
     public connectedUser: EventEmitter<User> = new EventEmitter<User>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+        this.connectedUser.subscribe(
+            user => this.user = user,
+            err => this.user = null
+        )
+    }
 
     public login(user: User): Observable<HttpResponse<Object>> {
         return this.http.post('/api/login', user, {observe: 'response'}).pipe(
@@ -38,8 +44,16 @@ export class AuthService {
         }
     }
 
+    public getCurrentUser(): User {
+        return this.user;
+    }
+
     public logout(): void {
         localStorage.removeItem('token');
         this.connectedUser.emit(null);
+    }
+
+    public isLoggedIn() {
+        return this.user != null;
     }
 }

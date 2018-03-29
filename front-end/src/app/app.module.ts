@@ -10,10 +10,11 @@ import {AuthService} from "./services/auth.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AdminService} from "./services/admin.service";
 import {AuthInterceptor} from "./services/auth.interceptor";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Route[] = [
-    {path:'login', component:LoginComponent},
-    {path:'', component:HomeComponent}
+    {path:'', component:LoginComponent},
+    {path:'home', component:HomeComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
@@ -37,7 +38,8 @@ const routes: Route[] = [
         provide: HTTP_INTERCEPTORS,
         useClass: AuthInterceptor,
         multi:true
-      }
+      },
+      AuthGuard
   ],
   bootstrap: [AppComponent]
 })

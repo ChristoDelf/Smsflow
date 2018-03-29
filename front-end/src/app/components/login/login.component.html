@@ -1,17 +1,18 @@
+<figure class="background"> <img src="assets/img/login_bg.jpg" alt="Adminux- sign in "> </figure>
 <div class="wrapper-content-sign-in">
   <div class="container text-center">
-    <h2 class="display-4 form-signin-heading text-white"><i class="fa fa-trophy"></i>Smsflow</h2>
-    <form class="form-signin1 white">
+    <h2 class="display-4 form-signin-heading text-white"><i class="fa fa-comments"></i>Smsflow</h2>
+    <form #loginForm="ngForm" (submit)="onSubmit(loginForm)" novalidate class="form-signin1 white">
       <h2 class="text-dark mb-4">Connexion</h2>
       <label class="sr-only">Nom d'utilisateur</label>
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" placeholder="Nom d'utilisateur">
+        <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="username" required ngModel>
       </div>
       <br>
       <label class="sr-only">Mot de passe</label>
       <div class="input-group"><span class="input-group-addon"><i class="fa fa-key"></i></span>
-        <input type="password" class="form-control" placeholder="Mot de passe">
+        <input type="password" class="form-control" placeholder="Mot de passe" name="password" required ngModel>
       </div>
       <br>
       <label class="custom-control custom-checkbox">
@@ -20,7 +21,7 @@
         <span class="custom-control-description">Se rappeller de moi ?</span>
       </label>
       <br>
-      <a routerLink="/home" class="btn btn-lg btn-primary btn-round">Se connecter</a>
+      <input type="submit" class="btn btn-lg btn-primary btn-round" value="Se connecter"/>
       <a routerLink="/forgotpassword" class="btn btn-link mt-2">Mot de passe oublié ?</a>
     </form>
     <p class="mt-3">Pas encore de compte ? <a routerLink="/signup" class="text-white">S'inscrire</a> !</p>

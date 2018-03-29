@@ -16,9 +16,6 @@ public class Authority extends BaseEntity implements GrantedAuthority {
     @Column(nullable = false, unique = true)
     private String authority;
 
-    @ManyToMany(mappedBy = "authorities")
-    private List<User> users;
-
     public Authority() {}
 
     public Authority(String authority) {
@@ -34,11 +31,4 @@ public class Authority extends BaseEntity implements GrantedAuthority {
         this.authority = authority;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 }

@@ -1,5 +1,6 @@
 package be.techmgt.smsflow.services.impl;
 
+import be.techmgt.smsflow.models.dto.UserFormDTO;
 import be.techmgt.smsflow.models.entity.Authority;
 import be.techmgt.smsflow.models.entity.User;
 import be.techmgt.smsflow.repositories.AuthorityRepository;
