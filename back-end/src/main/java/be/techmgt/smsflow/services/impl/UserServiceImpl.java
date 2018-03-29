@@ -3,6 +3,7 @@ package be.techmgt.smsflow.services.impl;
 import be.techmgt.smsflow.models.dto.UserFormDTO;
 import be.techmgt.smsflow.models.entity.Authority;
 import be.techmgt.smsflow.models.entity.User;
+import be.techmgt.smsflow.models.mappers.UserMapper;
 import be.techmgt.smsflow.repositories.AuthorityRepository;
 import be.techmgt.smsflow.repositories.UserRepository;
 import be.techmgt.smsflow.services.UserService;
@@ -21,11 +22,13 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final AuthorityRepository authorityRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
-    public UserServiceImpl(UserRepository userRepository, AuthorityRepository authorityRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, AuthorityRepository authorityRepository, PasswordEncoder passwordEncoder, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.authorityRepository = authorityRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -68,9 +71,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long id) {
-
-        return userRepository.findOne(id);
+    public UserFormDTO findById(Long id) {
+        return userMapper.toFormDto(userRepository.findOne(id));
     }
 
     @Override

@@ -16,18 +16,17 @@ export class HomeComponent implements OnInit {
     constructor(private adminService: AdminService, private authService: AuthService) { }
 
     ngOnInit() {
-        this.authService.connectedUser.subscribe(
-            user => {
-                this.user = user;
-                this.loadUsers();
-            },
-            err => this.user = null
-        );
+        this.user = this.authService.getCurrentUser();
+        this.loadUsers();
     }
+
 
     private loadUsers(): void {
         this.adminService.getUsers().subscribe(
-            res => this.users = res
+            res => this.users = res.map(u => {
+                u.authorities = u.authorities.map(a => a.authority).join(', ');
+                return u;
+            })
         );
     }
 

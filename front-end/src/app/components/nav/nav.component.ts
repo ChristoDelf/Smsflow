@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
         this.authService.connectedUser.subscribe(
             user => {
                 console.log('NavComponent, user');
-                this.connectedUser = user
+                this.connectedUser = user;
             },
             err => {
                 console.log('NavComponent, error');
