@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../models/user";
-import {AdminService} from "../../services/admin.service";
-import {AuthService} from "../../services/auth.service";
+import {User} from "../../../models/user";
+import {AdminService} from "../../../services/admin.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-home',
@@ -23,16 +23,14 @@ export class HomeComponent implements OnInit {
 
     private loadUsers(): void {
         this.adminService.getUsers().subscribe(
-            res => this.users = res.map(u => {
+            res => this.users = res/*.map(u => {
                 u.authorities = u.authorities.map(a => a.authority).join(', ');
-                return u;
-            })
-        );
+                return u;*/
+            )
     }
 
     get isAdmin(): boolean {
-        return this.user != null
-            && this.user.authorities.filter(a => a.authority === 'ROLE_ADMIN').length > 0;
+        return this.user != null && this.user.authorities.indexOf('ROLE_ADMIN') > -1;
     }
 
 }

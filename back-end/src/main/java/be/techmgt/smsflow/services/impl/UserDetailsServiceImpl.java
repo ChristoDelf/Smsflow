@@ -1,6 +1,7 @@
 package be.techmgt.smsflow.services.impl;
 
 import be.techmgt.smsflow.models.entity.User;
+import be.techmgt.smsflow.models.mappers.UserMapper;
 import be.techmgt.smsflow.repositories.UserRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,9 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public UserDetailsServiceImpl(UserRepository userRepository) {
+    public UserDetailsServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     @Override

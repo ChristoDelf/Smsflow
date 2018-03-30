@@ -1,5 +1,6 @@
 package be.techmgt.smsflow.config;
 
+import be.techmgt.smsflow.models.dto.UserDTO;
 import be.techmgt.smsflow.models.entity.User;
 import be.techmgt.smsflow.services.UserService;
 import org.springframework.beans.factory.InitializingBean;
@@ -19,20 +20,20 @@ public class DbInit implements InitializingBean {
 
         if (userService.findByUsername("adminC") == null) {
 
-            User user = new User();
-            user.setCompanyName("TechMGT");
-            user.setNameOfContact("Christopher Delfosse");
-            user.setEmail("christopher@techmgt.be");
-            user.setUsername("adminC");
-            user.setPassword("admin");
-            user.setPhoneNumber("0474247112");
-            user.setStreet("Rue Abel Wart, 198");
-            user.setCity("Fayt-Lez-Manage");
-            user.setPostalCode("7170");
-            user.setCountry("Belgium");
-            user.setTvaNumber("BE758425948");
+            UserDTO userdto = new UserDTO();
+            userdto.companyName = "TechMGT";
+            userdto.nameOfContact = "Christopher Delfosse";
+            userdto.email = "christopher@techmgt.be";
+            userdto.username = "adminC";
+            userdto.password = "admin";
+            userdto.phoneNumber = "0474247112";
+            userdto.street = "Rue Abel Wart, 198";
+            userdto.city = "Fayt-Lez-Manage";
+            userdto.postalCode = "7170";
+            userdto.country = "Belgium";
+            userdto.tvaNumber = "BE758425948";
 
-            user = userService.register(user, true);
+            userService.register(userdto, true);
         }
     }
 }
