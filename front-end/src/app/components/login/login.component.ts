@@ -18,18 +18,18 @@ export class LoginComponent implements OnInit {
         this.authService.connectedUser.subscribe(
             user => {
                 if (user != null) {
-                    this.router.navigate(['home'])
+                    this.router.navigate(['dashboard', 'home'])
                 }
             });
 
-        this.route.queryParams.subscribe(params => this.return = params['return'] || '/home');
+        this.route.queryParams.subscribe(params => this.return = params['return'] || 'dashboard/home');
     }
 
     public onSubmit(loginForm: NgForm):void {
         if(loginForm.valid) {
             this.authService.login(loginForm.value).subscribe(
                 res => {
-                    this.router.navigate(['home']);
+                    this.router.navigate(['dashboard', 'home']);
                 }
             );
         }

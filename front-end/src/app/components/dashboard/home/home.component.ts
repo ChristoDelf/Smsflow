@@ -13,24 +13,9 @@ export class HomeComponent implements OnInit {
     user: User;
     users: User[];
 
-    constructor(private adminService: AdminService, private authService: AuthService) { }
+    constructor( ) { }
 
     ngOnInit() {
-        this.user = this.authService.getCurrentUser();
-        this.loadUsers();
-    }
-
-
-    private loadUsers(): void {
-        this.adminService.getUsers().subscribe(
-            res => this.users = res/*.map(u => {
-                u.authorities = u.authorities.map(a => a.authority).join(', ');
-                return u;*/
-            )
-    }
-
-    get isAdmin(): boolean {
-        return this.user != null && this.user.authorities.indexOf('ROLE_ADMIN') > -1;
     }
 
 }

@@ -1,0 +1,22 @@
+<div *ngIf="isAdmin">
+  <h1>Administration</h1>
+  <h2>Users</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Authorities</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.username}}</td>
+      <td>{{user.authorities.join(', ')}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="!isAdmin">
+  Bonjour, vous n'êtes pas admin. Vous voyez donc moins d'informations !
+</div>
