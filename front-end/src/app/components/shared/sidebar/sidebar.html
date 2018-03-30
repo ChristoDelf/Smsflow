@@ -1,0 +1,23 @@
+<div class="sidebar-left">
+  <div class="user-menu-items">
+    <div class="list-unstyled btn-group">
+      <button class="media btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="message_userpic"><img class="d-flex" src="assets/img/user-header.png" alt="Generic user image"></span> <span class="media-body"><span class="mt-0 mb-1">{{user.username}}</span></span> </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" >Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" >Setting</a>
+        <a href="#" class="dropdown-item" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <ul class="nav flex-column in" id="side_menu">
+    <li class="title-nav">Menu</li>
+    <li class="nav-item active" [ngClass]="{'active' : (showMenu === 'dashboard')}"><a href="javascript:void(0)" class="menudropdown nav-link" (click)="addExpandClass('dashboard')">Dashboard<i class="fa fa-angle-down "></i></a>
+      <ul class="nav flex-column nav-second-level ">
+        <li><a href="#" class="nav-link" routerLink="home" [ngClass]="{'active': (addActive === 'home')}" (click)="addActiveMenu('home')"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="#" class="nav-link" routerLink="userlist" [ngClass]="{'active': (addActive === 'userlist')}" (click)="addActiveMenu('userlist')"><i class="fa fa-home"></i>User list</a></li>
+      </ul>
+    </li>
+    </ul>
+</div>
