@@ -14,10 +14,16 @@
   <ul class="nav flex-column in" id="side_menu">
     <li class="title-nav">Menu</li>
     <li class="nav-item active" [ngClass]="{'active' : (showMenu === 'dashboard')}"><a href="javascript:void(0)" class="menudropdown nav-link" (click)="addExpandClass('dashboard')">Dashboard<i class="fa fa-angle-down "></i></a>
-      <ul class="nav flex-column nav-second-level ">
+      <ul class="nav flex-column nav-second-level">
         <li><a href="#" class="nav-link" routerLink="home" [ngClass]="{'active': (addActive === 'home')}" (click)="addActiveMenu('home')"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="#" class="nav-link" routerLink="userlist" [ngClass]="{'active': (addActive === 'userlist')}" (click)="addActiveMenu('userlist')"><i class="fa fa-home"></i>User list</a></li>
-      </ul>
+       </ul>
     </li>
+    <div *ngIf="isAdmin">
+      <li class="nav-item active" [ngClass]="{'active' : (showMenu === 'administration')}"><a href="javascript:void(0)" class="menudropdown nav-link" (click)="addExpandClass('administration')">Panneau admin<i class="fa fa-angle-down "></i></a>
+        <ul class="nav flex-column nav-second-level">
+          <li><a href="#" class="nav-link" routerLink="userlist" [ngClass]="{'active': (addActive === 'userlist')}" (click)="addActiveMenu('userlist')"><i class="fa fa-home"></i>User list</a></li>
+        </ul>
+      </li>
+      </div>
     </ul>
 </div>

@@ -1,49 +1,69 @@
-<figure class="background"> <img src="assets/img/login_bg.jpg" alt="Adminux- sign in "> </figure>
 <header class="navbar-fixed">
   <nav class="navbar navbar-toggleable-md sign-in-header">
     <div class="pull-left">  <a class="navbar-brand imglogo" href="index.html"></a> </div>
-    <div class="col"></div>
-    <div class="pull-right" >
-      <ul class="navbar-nav  justify-content-end">
-        <li><a href="#" class="btn btn-link text-white" >Need Help ?</a></li>
-        <li><a href="index.html" class="btn btn-primary " >Register</a></li>
-      </ul>
-    </div>
   </nav>
 </header>
-<div class="wrapper-content-sign-in p-0">
-  <div class="col-md-8 offset-md-8 text-left side_signing_full">
-    <form class="form-signin1 full_side text-white ">
-      <h2 class="tex-black mb-4">Sign Up</h2>
-      <label  class="sr-only">Name</label>
-      <input type="text" class="form-control" placeholder="Name" >
+<div class="wrapper-content-sign-in ">
+  <div class="container text-center">
+    <h2 class="display-4 text-white"><i class="fa fa-comments"></i>Smsflow</h2>
+    <form class="form-signin1 white">
+      <h2 class="text-dark mb-4">Inscription</h2>
+      <label  class="sr-only">Nom de la société</label>
+      <div class="input-group"><span class="input-group-addon"><i class="fa fa-building"></i></span>
+        <input type="text" class="form-control" placeholder="Nom de la société" name="companyName" ngModel>
+      </div>
       <br>
-      <label  class="sr-only">User name</label>
-      <input type="text" class="form-control" placeholder="Username" >
+      <label  class="sr-only">Nom du contact</label>
+      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <input type="text" class="form-control" placeholder="Nom du contact de référence" name="nameOfContact" ngModel>
+      </div>
       <br>
-      <label  class="sr-only">Email address</label>
-      <input type="text" class="form-control" placeholder="Email address" >
+      <label  class="sr-only">Numéro de téléphone</label>
+      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+        <input type="text" class="form-control" placeholder="Numéro de téléphone" name="phoneNumber" ngModel>
+      </div>
+      <br>
+      <label  class="sr-only">Rue</label>
+      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-road"></i></span>
+        <input type="text" class="form-control" placeholder="Rue" name="street" ngModel>
+      </div>
+      <br>
+      <label  class="sr-only">Code postal</label>
+      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+        <input type="text" class="form-control" placeholder="Code postal" name="postalCode" ngModel>
+      </div>
+      <br>
+      <label  class="sr-only">Ville</label>
+      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-university"></i></span>
+        <input type="text" class="form-control" placeholder="Ville" name="city" ngModel>
+      </div>
+      <br>
+      <label  class="sr-only">Pays</label>
+      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+        <select class="form-control" placeholder="Pays" name="country" (change)="changeCountry(value)" #value>
+          <option value="">Choisissez votre pays...</option>
+          <option value="BE">Belgium</option>
+          <option value="FR">France</option>
+          <option value="NL">Netherlands</option>
+        </select>
+      </div>
+      <br>
+      <label  class="sr-only">Nom d'utilisateur</label>
+      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+        <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="username" ngModel>
+      </div>
+      <br>
+      <label  class="sr-only">Adresse e-mail</label>
+      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+        <input type="text" class="form-control" placeholder="Adresse e-mail" name="email" ngModel>
+      </div>
       <br>
       <label class="sr-only">Password</label>
-      <input type="password" class="form-control" placeholder="Paassword" >
+      <div class="input-group"> <span class="input-group-addon" ><i class="fa fa-key"></i></span>
+        <input type="password" class="form-control" placeholder="Mot de passe" name="password" ngModel>
+      </div>
       <br>
-      <label class="sr-only">Confirm Password</label>
-      <input type="password" class="form-control" placeholder="Confirm Paassword" >
-      <br>
-      <div class="checkbox">
-        <label class="form-check-label active">
-          <input type="checkbox" class="form-check-input">
-          <i class="fa fa-check"></i></label>
-        Remember me </div>
-      <a href="index.html" class="btn btn-lg btn-primary btn-round">Sign Up</a> <br>
-      <br>
-      <p class="mt-3"><a href="#" class="text-white">Sign in here!</a> <br>
-        <a href="" class="">Forgot password?</a></p>
+      <a routerLink="/" class="btn btn-lg btn-primary btn-round">Sign Up</a><br>
     </form>
-    <br>
   </div>
-  <footer class="footer-content row  justify-content-between align-items-center">
-    <div class="col-sm-8">This template is designed by <a href="http://www.maxartkiller.in" target="_blank" class="">www.maxartkiller.in</a></div>
-    <div class="col-sm-8 text-right"><a href="#" target="_blank" class="text-white">Privacy Policy</a> | <a href="#" target="_blank" class="text-white">Terms of use</a> </div>
-  </footer>
 </div>

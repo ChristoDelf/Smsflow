@@ -6,7 +6,7 @@ import java.util.List;
 
 public class UserDTO {
 
-    public String id;
+    public Long id;
     public String companyName;
     public String nameOfContact;
     public String email;

@@ -1,10 +1,15 @@
 package be.techmgt.smsflow.config;
 
 import be.techmgt.smsflow.models.dto.UserDTO;
+import be.techmgt.smsflow.models.entity.Authority;
 import be.techmgt.smsflow.models.entity.User;
 import be.techmgt.smsflow.services.UserService;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+
+import java.util.Collections;
 
 @Component
 public class DbInit implements InitializingBean {
@@ -17,6 +22,7 @@ public class DbInit implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        runAsAdmin();
 
         if (userService.findByUsername("adminC") == null) {
 
@@ -35,5 +41,16 @@ public class DbInit implements InitializingBean {
 
             userService.register(userdto, true);
         }
+
+        endRunAsAdmin();
+    }
+
+    private void runAsAdmin() {
+        final AnonymousAuthenticationToken token = new AnonymousAuthenticationToken("system", "system", Collections.singletonList(new Authority("ROLE_ADMIN")));
+        SecurityContextHolder.getContext().setAuthentication(token);
+    }
+
+    private void endRunAsAdmin() {
+        SecurityContextHolder.getContext().setAuthentication(null);
     }
 }

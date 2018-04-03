@@ -1,4 +1,9 @@
 <figure class="background"> <img src="assets/img/login_bg.jpg" alt="Adminux- sign in "> </figure>
+<header class="navbar-fixed">
+  <nav class="navbar navbar-toggleable-md sign-in-header">
+    <div class="pull-left">  <a class="navbar-brand imglogo" href="#"></a> </div>
+  </nav>
+</header>
 <div class="wrapper-content-sign-in">
   <div class="container text-center">
     <h2 class="display-4 form-signin-heading text-white"><i class="fa fa-comments"></i>Smsflow</h2>
@@ -14,12 +19,6 @@
       <div class="input-group"><span class="input-group-addon"><i class="fa fa-key"></i></span>
         <input type="password" class="form-control" placeholder="Mot de passe" name="password" required ngModel>
       </div>
-      <br>
-      <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Se rappeller de moi ?</span>
-      </label>
       <br>
       <input type="submit" class="btn btn-lg btn-primary btn-round" value="Se connecter"/>
       <a routerLink="/forgotpassword" class="btn btn-link mt-2">Mot de passe oublié ?</a>

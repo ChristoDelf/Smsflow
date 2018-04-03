@@ -4,14 +4,16 @@
   <table>
     <thead>
     <tr>
-      <th>Username</th>
-      <th>Authorities</th>
+      <th>Id utilisateur</th>
+      <th>Nom du contact</th>
+      <th>Nom de la société</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let user of users">
-      <td>{{user.username}}</td>
-      <td>{{user.authorities.join(', ')}}</td>
+      <td>{{user.id}}</td>
+      <td>{{user.nameOfContact}}</td>
+      <td>{{user.companyName}}</td>
     </tr>
     </tbody>
   </table>

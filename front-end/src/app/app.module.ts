@@ -16,8 +16,9 @@ import {HomeComponent} from "./components/dashboard/home/home.component";
 import {UserlistComponent} from "./components/dashboard/userlist/userlist.component";
 
 const routes: Route[] = [
-    {path: '', component: LoginComponent},
-    {path: 'dashboard',
+    { path: '', component: LoginComponent },
+    { path: 'signup', component: RegisterComponent },
+    { path: 'dashboard',
         component: DashboardComponent,
         canActivate:[AuthGuard],
         children: [

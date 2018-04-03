@@ -10,12 +10,8 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class HomeComponent implements OnInit {
 
-    user: User;
-    users: User[];
+    constructor( ) {}
 
-    constructor( ) { }
-
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
 }

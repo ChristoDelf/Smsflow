@@ -18,16 +18,16 @@ export class AuthService {
     }
 
     public login(user: User): Observable<HttpResponse<Object>> {
-        return this.http.post('/api/login', user, {observe: 'response'}).pipe(
-            tap(res => {
-                    const token = res.headers.get('Authorization').substr(7);
-                    localStorage.setItem('token', token);
-                    this.whoAmI();
-                },
-                err => {
-                    this.connectedUser.emit(null);
-                })
-        );
+            return this.http.post('/api/login', user, {observe: 'response'}).pipe(
+                tap(res => {
+                        const token = res.headers.get('Authorization').substr(7);
+                        localStorage.setItem('token', token);
+                        this.whoAmI();
+                    },
+                    err => {
+                        this.connectedUser.emit(null);
+                    })
+            );
     }
 
     public whoAmI(): void {

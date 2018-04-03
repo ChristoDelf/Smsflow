@@ -6,6 +6,7 @@ import be.techmgt.smsflow.models.entity.User;
 import be.techmgt.smsflow.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 

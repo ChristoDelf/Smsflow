@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class UserMapper {
 
-    public UserFormDTO toFormDto(User user){
+    public UserFormDTO toFormDto(User user) {
 
         UserFormDTO userFormDTO = new UserFormDTO();
 
@@ -23,14 +23,14 @@ public class UserMapper {
         return userFormDTO;
     }
 
-    public UserDTO toFullDto(User user){
+    public UserDTO toFullDto(User user) {
 
         UserDTO userDTO = new UserDTO();
 
         userDTO.companyName = user.getCompanyName();
         userDTO.nameOfContact = user.getNameOfContact();
         userDTO.username = user.getUsername();
-        userDTO.password = user.getPassword();
+        userDTO.password = null;
         userDTO.email = user.getEmail();
         userDTO.creditsLeft = user.getCreditsLeft();
         userDTO.creditsTotal = user.getCreditsTotal();
@@ -48,7 +48,7 @@ public class UserMapper {
         return userDTO;
     }
 
-    public User toEntity(UserDTO userdto){
+    public User toEntity(UserDTO userdto) {
 
         User user = new User();
 
@@ -71,6 +71,4 @@ public class UserMapper {
 
         return user;
     }
-
-
 }

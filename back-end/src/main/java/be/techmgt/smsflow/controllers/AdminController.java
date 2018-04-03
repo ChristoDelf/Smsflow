@@ -1,5 +1,6 @@
 package be.techmgt.smsflow.controllers;
 
+import be.techmgt.smsflow.models.dto.UserDTO;
 import be.techmgt.smsflow.models.dto.UserFormDTO;
 import be.techmgt.smsflow.repositories.UserRepository;
 import be.techmgt.smsflow.services.UserService;
@@ -20,7 +21,7 @@ public class AdminController {
     }
 
     @GetMapping("/users")
-    public List<UserFormDTO> getUsers(){
-        return userService.findAllFormDTO();
+    public List<UserDTO> getUsers(){
+        return userService.findAll();
     }
 }
