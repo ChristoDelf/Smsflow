@@ -20,14 +20,13 @@ export class UserlistComponent implements OnInit {
     this.loadUsers();
   }
 
+  private loadUsers(): void {
+      this.adminService.getUsers().subscribe(
+          res => this.users = res
+      );
+  }
 
-    private loadUsers(): void {
-        this.adminService.getUsers().subscribe(
-            res => this.users = res
-        );
-    }
-
-    get isAdmin(): boolean {
-        return this.user != null && this.user.authorities.indexOf('ROLE_ADMIN') > -1;
-    }
+  get isAdmin(): boolean {
+      return this.user != null && this.user.authorities.indexOf('ROLE_ADMIN') > -1;
+  }
 }

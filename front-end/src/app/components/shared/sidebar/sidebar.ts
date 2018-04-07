@@ -56,4 +56,8 @@ export class SidebarComponent implements OnInit {
 
         this.user = this.authService.getCurrentUser();
     }
+
+    get isAdmin(): boolean {
+        return this.user != null && this.user.authorities.indexOf('ROLE_ADMIN') > -1;
+    }
 }
