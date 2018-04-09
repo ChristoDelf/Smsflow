@@ -9,21 +9,21 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AdminService} from "./services/admin.service";
 import {AuthInterceptor} from "./services/auth.interceptor";
 import {AuthGuard} from "./guards/auth.guard";
-import {RegisterComponent} from './components/register/register.component';
 import {DashboardComponent} from './components/dashboard';
 import {DashboardModule} from "./components/dashboard/dashboard.module";
 import {HomeComponent} from "./components/dashboard/home/home.component";
 import {UserlistComponent} from "./components/dashboard/userlist/userlist.component";
+import {RegisterComponent} from "./components/dashboard/register/register.component";
 
 const routes: Route[] = [
     { path: '', component: LoginComponent },
-    { path: 'signup', component: RegisterComponent },
     { path: 'dashboard',
         component: DashboardComponent,
         canActivate:[AuthGuard],
         children: [
             { path: 'home', component: HomeComponent },
-            { path: 'userlist', component: UserlistComponent }
+            { path: 'userlist', component: UserlistComponent },
+            { path: 'signup', component: RegisterComponent }
         ]
     }
 ];
@@ -31,8 +31,7 @@ const routes: Route[] = [
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent,
-        RegisterComponent
+        LoginComponent
     ],
     imports: [
         BrowserModule,
