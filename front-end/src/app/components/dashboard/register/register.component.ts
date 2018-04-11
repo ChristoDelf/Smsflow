@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from "@angular/forms";
+import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthService} from "../../../services/auth.service";
+import {RegisterService} from "../../../services/register.service";
+import {PasswordValidation} from "../../../validation/PasswordValidation";
 
 @Component({
   selector: 'app-register',
@@ -10,19 +11,36 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  countries: string[] = [
+      'Belgium', 'France', 'Netherlands'
+  ];
 
-  ngOnInit() {}
+  registerFormGroup: FormGroup;
 
-    changeCountry(select: HTMLSelectElement) {
-        console.log(select.value)
-    }
+  constructor(private registerService: RegisterService, private router: Router, private builder: FormBuilder) {
+      this.createForm();
+  }
 
-    public onSubmit(loginForm: NgForm):void {
-        if(loginForm.valid) {
-            this.authService.login(loginForm.value).subscribe(
+  ngOnInit() {
+  }
+
+  createForm() {
+      this.registerFormGroup = this.builder.group({
+          'companyName': [ '', Validators.compose([Validators.required, Validators.minLength(6)]) ],
+          'nameOfContact': [ '', Validators.required ],
+          'username': [ '', Validators.required ],
+          'password': [ '', Validators.required ],
+          'confirmPassword': [
+              '', [ Validators.required, PasswordValidation.MatchPassword ]
+          ]
+      });
+  }
+
+    public onSubmit(registerForm: NgForm):void {
+        if(registerForm.valid) {
+            this.registerService.registerUser(registerForm.value).subscribe(
                 res => {
-                    this.router.navigate(['']);
+                    this.router.navigateByUrl('/dashboard/userlist');
                 }
             );
         }

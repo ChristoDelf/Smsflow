@@ -14,6 +14,7 @@ import {DashboardModule} from "./components/dashboard/dashboard.module";
 import {HomeComponent} from "./components/dashboard/home/home.component";
 import {UserlistComponent} from "./components/dashboard/userlist/userlist.component";
 import {RegisterComponent} from "./components/dashboard/register/register.component";
+import {RegisterService} from "./services/register.service";
 
 const routes: Route[] = [
     { path: '', component: LoginComponent },
@@ -44,6 +45,7 @@ const routes: Route[] = [
     providers: [
         AuthService,
         AdminService,
+        RegisterService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,

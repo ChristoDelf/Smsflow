@@ -8,6 +8,7 @@ import {DashboardComponent} from "./dashboard.component";
 import {RouterModule} from "@angular/router";
 import { UserlistComponent } from './userlist/userlist.component';
 import {RegisterComponent} from "./register/register.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import {RegisterComponent} from "./register/register.component";
     ],
     imports: [
         BrowserModule,
-        RouterModule
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [
         AuthGuard

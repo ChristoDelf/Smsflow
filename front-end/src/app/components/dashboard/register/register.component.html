@@ -3,67 +3,133 @@
     <div class="pull-left">  <a class="navbar-brand imglogo" href="index.html"></a> </div>
   </nav>
 </header>
-<div class="wrapper-content-sign-in ">
-  <div class="container text-center">
-    <h2 class="display-4 text-white"><i class="fa fa-comments"></i>Smsflow</h2>
-    <form class="form-signin1 white">
-      <h2 class="text-dark mb-4">Inscription</h2>
-      <label  class="sr-only">Nom de la société</label>
-      <div class="input-group"><span class="input-group-addon"><i class="fa fa-building"></i></span>
-        <input type="text" class="form-control" placeholder="Nom de la société" name="companyName" ngModel>
-      </div>
-      <br>
-      <label  class="sr-only">Nom du contact</label>
-      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" placeholder="Nom du contact de référence" name="nameOfContact" ngModel>
-      </div>
-      <br>
-      <label  class="sr-only">Numéro de téléphone</label>
-      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-        <input type="text" class="form-control" placeholder="Numéro de téléphone" name="phoneNumber" ngModel>
-      </div>
-      <br>
-      <label  class="sr-only">Rue</label>
-      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-road"></i></span>
-        <input type="text" class="form-control" placeholder="Rue" name="street" ngModel>
-      </div>
-      <br>
-      <label  class="sr-only">Code postal</label>
-      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-        <input type="text" class="form-control" placeholder="Code postal" name="postalCode" ngModel>
-      </div>
-      <br>
-      <label  class="sr-only">Ville</label>
-      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-university"></i></span>
-        <input type="text" class="form-control" placeholder="Ville" name="city" ngModel>
-      </div>
-      <br>
-      <label  class="sr-only">Pays</label>
-      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-globe"></i></span>
-        <select class="form-control" placeholder="Pays" name="country" (change)="changeCountry(value)" #value>
-          <option value="">Choisissez votre pays...</option>
-          <option value="BE">Belgium</option>
-          <option value="FR">France</option>
-          <option value="NL">Netherlands</option>
-        </select>
-      </div>
-      <br>
-      <label  class="sr-only">Nom d'utilisateur</label>
-      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-        <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="username" ngModel>
-      </div>
-      <br>
-      <label  class="sr-only">Adresse e-mail</label>
-      <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-        <input type="text" class="form-control" placeholder="Adresse e-mail" name="email" ngModel>
-      </div>
-      <br>
-      <label class="sr-only">Password</label>
-      <div class="input-group"> <span class="input-group-addon" ><i class="fa fa-key"></i></span>
-        <input type="password" class="form-control" placeholder="Mot de passe" name="password" ngModel>
-      </div>
-      <br>
-      <a routerLink="/" class="btn btn-lg btn-primary btn-round">Sign Up</a><br>
-    </form>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-11 col-sm-12 page-title">
+      <h3>Formulaire d'ajout d'un nouvel utilisateur</h3>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-sm-16">
+      <div class="card">
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+              <form #registerForm="ngForm" (submit)="onSubmit(registerForm)" novalidate [formGroup]="registerFormGroup">
+                <div class="form-group row">
+                  <div class="col-lg-8 col-md-8">
+                    <label>Nom de la société</label>
+                    <div class="input-group"><span class="input-group-addon"><i class="fa fa-building"></i></span>
+                      <input type="text" class="form-control" formControlName="companyName" placeholder="Nom de la société" name="companyName" ngModel>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="!registerFormGroup.controls['companyName'].valid && registerFormGroup.controls['companyName'].touched">Company Name should at least be 6 characters !!</div>
+                  </div>
+                  <div class="col-lg-8 col-md-8">
+                    <label>Numéro de TVA</label>
+                    <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                      <input type="text" class="form-control" placeholder="Numéro de TVA" name="tvaNumber" ngModel>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-lg-8 col-md-8">
+                    <label>Nom du contact</label>
+                    <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                      <input type="text" formControlName="nameOfContact" class="form-control" placeholder="Nom du contact de référence" name="nameOfContact" ngModel>
+                    </div>
+                  </div>
+                  <div class="col-lg-8 col-md-8">
+                    <label>Numéro de téléphone</label>
+                    <div class="input-group"> <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                      <input type="text" class="form-control" placeholder="Numéro de téléphone" name="phoneNumber" ngModel>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-lg-8 col-md-8">
+                    <div class="row">
+                      <div class="col-lg-8">
+                        <label>Pays</label>
+                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                          <select class="form-control" name="country" ngModel>
+                            <option *ngFor="let country of countries" ngValue="{{country}}">{{country}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-8">
+                        <label>Ville</label>
+                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-university"></i></span>
+                          <input type="text" class="form-control" placeholder="Ville" name="city" ngModel>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-8 col-md-8">
+                    <div class="row">
+                      <div class="col-lg-8">
+                        <label>Rue</label>
+                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-road"></i></span>
+                          <input type="text" class="form-control" placeholder="Rue" name="street" ngModel>
+                        </div>
+                      </div>
+                      <div class="col-lg-8">
+                        <label>Code postal</label>
+                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+                          <input type="text" class="form-control" placeholder="Code postal" name="postalCode" ngModel>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-lg-16 col-md-16">
+                    <div class="row">
+                      <div class="col-lg-8">
+                        <label>Nom d'utilisateur</label>
+                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                          <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="username" formControlName="username" ngModel>
+                        </div>
+                      </div>
+                      <div class="col-lg-8">
+                        <label>Password</label>
+                        <div class="input-group"> <span class="input-group-addon" ><i class="fa fa-key"></i></span>
+                          <input type="password" class="form-control" placeholder="Mot de passe" name="password" formControlName="password" ngModel>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-lg-16 col-md-16">
+                    <div class="row">
+                      <div class="col-lg-8">
+                        <label>Adresse e-mail</label>
+                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                          <input type="text" class="form-control" placeholder="Adresse e-mail" name="email" ngModel>
+                        </div>
+                      </div>
+                      <div class="col-lg-8">
+                        <label>Répéter mot de passe</label>
+                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-key"></i></span>
+                          <input type="password" class="form-control" placeholder="Répéter mot de passe" name="password2" formControlName="confirmPassword">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <input type="submit" class="btn btn-success pull-right" value="Ajouter"><br>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

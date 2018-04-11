@@ -2,26 +2,45 @@ package be.techmgt.smsflow.models.entity;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class User extends BaseEntity implements UserDetails {
 
+    @Column(nullable = false)
     private String companyName;
+
+    @Column(nullable = false)
     private String nameOfContact;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(unique = true, nullable = false)
     private String username;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String phoneNumber;
+
+    @Column(nullable = false)
     private String street;
+
+    @Column(nullable = false)
     private String city;
+
+    @Column(nullable = false)
     private String postalCode;
+
+    @Column(nullable = false)
     private String country;
+
+    @Column(unique = true, nullable = false)
     private String tvaNumber;
+
     private int creditsTotal;
     private int creditsLeft;
 

@@ -21,7 +21,8 @@
     <div *ngIf="isAdmin">
       <li class="nav-item active" [ngClass]="{'active' : (showMenu === 'administration')}"><a href="javascript:void(0)" class="menudropdown nav-link" (click)="addExpandClass('administration')">Panneau administrateur<i class="fa fa-angle-down"></i></a>
         <ul class="nav flex-column nav-second-level">
-          <li><a href="#" class="nav-link" routerLink="userlist" [ngClass]="{'active': (addActive === 'userlist')}" (click)="addActiveMenu('userlist')"><i class="fa fa-home"></i>User list</a></li>
+          <li><a href="#" class="nav-link" routerLink="userlist" [ngClass]="{'active': (addActive === 'userlist')}" (click)="addActiveMenu('userlist')"><i class="fa fa-home"></i>Liste des utilisateurs</a></li>
+          <li><a href="#" class="nav-link" routerLink="signup" [ngClass]="{'active': (addActive === 'signup')}" (click)="addActiveMenu('signup')"><i class="fa fa-home"></i>Ajouter un nouvel utilisateur</a></li>
         </ul>
       </li>
       </div>
